@@ -1,0 +1,58 @@
+﻿@model OnlineBookStore.Models.BooksDetail
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Addtocart";
+     ViewBag.UserId = @HttpContextAccessor.HttpContext.Session.GetString("UserId");
+      Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>Addtocart</h1>
+
+<dl>
+
+  
+ <div class="row">
+     .
+    <div class="col-md-4">
+        <form asp-action="Addtocart">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId" />
+
+@*            <div class="form-group">
+                <label asp-for="BookId" class="control-label"></label>
+                <input asp-for="BookId" class="form-control" />
+                <span asp-validation-for="BookId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="BookName" class="control-label"></label>
+                <input asp-for="BookName" class="form-control"  disabled/>
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" disabled />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" disabled />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">            
+           <input type="number" name="qty" value="1" min="1"  max="@ViewBag.Stockcount" id="qty"/>
+                    @if (@ViewBag.Stockcount <= 0)
+                    {
+                        <p>*Out of stock check sometimes later</p>
+                    }
+                </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+       

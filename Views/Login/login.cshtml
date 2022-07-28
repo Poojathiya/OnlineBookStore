@@ -1,0 +1,62 @@
+﻿@model OnlineBookStore.Models.NewRegistration
+@{
+	Layout=null; 
+}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page in HTML with CSS Code Example</title>
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+
+<div class="box-form" >
+	<div class="left ">
+		<div class="overlay">
+			
+		<h1>Online Book Store</h1>
+		<p>"Books are a uniquely portable magic." – Stephen King</p>
+
+		</div>
+	</div>
+	
+	
+		<div class="right">
+			<form asp-action="login">
+				 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<h5>Login</h5>
+		<p>Don't have an account? <a  href="@Url.Action("Registration")">Creat Your Account</a> it takes less than a minute</p>
+		<div class="inputs">
+			<input asp-for="UserId" type="text" placeholder="Enter Your UserId">
+			<br>
+			<input asp-for="Password" type="password" placeholder="Password">
+		</div>
+			
+			<br><br>
+			
+		
+				<!-- Angular -->
+	
+			<br>
+			<button>Login</button>
+			</form>
+
+	</div>
+	
+			      	@if (ViewBag.Message != null)  
+    {  
+        <script type="text/javascript">  
+            window.onload = function () {  
+                alert("@ViewBag.Message");  
+            };  
+        </script>  
+    }
+
+  
+</body>
+</html>

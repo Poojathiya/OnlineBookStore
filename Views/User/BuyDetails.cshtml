@@ -1,0 +1,89 @@
+﻿@model IEnumerable<OnlineBookStore.Models.Mycart>
+
+@{
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewData["Title"] = "Details";
+}
+
+@if (ViewData["total"] != null)
+    {
+        
+    }
+    <p>
+    <h6>User Name: @ViewBag.UserName</h6>
+    <h6>Mail Id: @ViewBag.MailId</h6>
+    <h6>Ph number: @ViewBag.Phnumber</h6>
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+              <th>
+                @Html.DisplayNameFor(model => model.Book.BookId)
+            </th>
+@*            
+            <th>
+                @Html.DisplayNameFor(model => model.Book.BookImage)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+         Unit Price
+            </th>
+              <th>
+           Quantity
+            </th>
+            <th>
+              Amount
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                        <td>
+                @Html.DisplayFor(modelItem => item.BookId)
+            </td>
+@*                   <td>
+                  
+                       <img src="@FileLocation.RetriveFileFromFolder@item.Book.BookImage" class="img-thumbnail" height="150" width="150" asp-append-version="true" />
+                
+                </td> *@
+            <td>
+
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+                       <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bill)
+            </td>
+ 
+        </tr>
+}
+    </tbody>
+</table>
+<p>Total Books: @ViewBag.count</p>
+<h5>Total Bill: Rs.@ViewData["total"]</h5>
+
+ <a asp-action="DemoViewAsPDF" class="btn btn-sm btn-info rounded-0">Download Invoice</a>
+
+   <a asp-action="Emptylist" class="btn btn-sm btn-info rounded-0" onclick="myFunction()"> Make Payment</a>
+         <script>
+function myFunction() {
+  alert("Thanks for purchasing");
+}
+</script>

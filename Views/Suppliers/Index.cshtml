@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OnlineBookStore.Models.Booksupplier>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupPh)
+            </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.MailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupPh)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.MailId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-SupId="@item.SupId">Edit</a> |
+                <a asp-action="Details" asp-route-SupId="@item.SupId">Details</a> |
+                <a asp-action="Delete" asp-route-SupId="@item.SupId">Delete</a>|
+                  <a asp-action="BookSupplyHistory" asp-controller="Admin" asp-route-SupId="@item.SupId">History</a>|
+                    <a asp-action="RequestQuote" asp-controller="Admin" asp-route-SupId="@item.SupId">Request Quote</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

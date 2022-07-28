@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OnlineBookStore.Models.BooksDetail>
+
+@{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link  rel="stylesheet" href="~/css/style4.css">
+     
+}
+  <form asp-action="SearchResult">
+          <div ><label for="SearchPhrase" class="control-label"></label>
+                <input name="SearchPhrase" placeholder="Search book by...." style="width: 1000px;height:40px;font-size:14pt;" />
+                <button type="submit"><i class="fa fa-search"></i>Search</button>
+      </div>
+      <br />
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+
+            <th>Book Id</th>
+            <th>Image</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>In Stock</th>
+            <th>Action(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookId</td>
+                <td>
+                   <a asp-action="Details" asp-route-BookId="@item.BookId">
+                       <img src="@FileLocation.RetriveFileFromFolder@item.BookImage" class="img-thumbnail" height="150" width="150" asp-append-version="true" />
+                    </a>
+                </td>             
+                <td>@item.BookName</td>
+                <td>@item.Author</td>
+                <td>
+                        @if (@item.Stock <= 0)
+                        {
+                            <h6>Out of Stock</h6>
+                        }
+                        else
+                        {
+                            @item.Stock
+                        }
+                    </td>
+                <td>
+                    <a asp-action="Edit" asp-route-BookId="@item.BookId" class="btn btn-sm btn-primary rounded-0"><i class="fa fa-pencil"></i> Edit</a>
+                    <a asp-action="Delete" asp-route-BookId="@item.BookId" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</form>
+
+ <script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>

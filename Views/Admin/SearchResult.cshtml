@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OnlineBookStore.Models.BooksDetail>
+
+@{
+    ViewData["Title"] = "SearchResult";
+       <link rel="stylesheet" href="~/css/style4.css" />
+}
+
+<h1>SearchResult</h1>
+
+
+<table class="table">
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            
+            <th>@Html.DisplayNameFor(model => model.BookImage)</th>
+            <th>@Html.DisplayNameFor(model => model.BookName)</th>
+            <th>@Html.DisplayNameFor(model => model.Author)</th>
+            <th>@Html.DisplayNameFor(model => model.Genre)</th>
+            <th>@Html.DisplayNameFor(model => model.SupId)</th>
+            <th>@Html.DisplayNameFor(model => model.Edition)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.Stock)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                   <a asp-action="Details" asp-route-BookId="@item.BookId">
+                       <img src="@FileLocation.RetriveFileFromFolder@item.BookImage" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
+                    </a>
+                </td>
+               
+                <td>@item.BookName</td>
+                <td>@item.Author</td>
+                <td>@item.Genre</td>
+                <td>@item.SupId</td>
+                <td>@item.Edition</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>
+                    <a asp-action="Edit" asp-route-BookId="@item.BookId" class="btn btn-sm btn-primary rounded-0"><i class="fa fa-pencil"></i> Edit</a>
+                    <a asp-action="Delete" asp-route-BookId="@item.BookId" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

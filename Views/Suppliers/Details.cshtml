@@ -1,0 +1,42 @@
+﻿@model OnlineBookStore.Models.Booksupplier
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Booksupplier</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SupName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SupName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SupPh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SupPh)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MailId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MailId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SupAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SupAddress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SupId">Edit</a> |
+
+</div>

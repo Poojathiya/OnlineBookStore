@@ -1,0 +1,108 @@
+﻿@model OnlineBookStore.ViewModels.BookViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<div class="card">
+    <div class="card-header">
+        <h3 class="text-uppercase">Edit Book Id: @Model.BookId</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <input type="hidden" asp-for="BookId" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BookName" class="control-label"></label>
+                        <input asp-for="BookName" class="form-control" /><br />
+                         <div>
+                        <span asp-validation-for="BookPicture" class="text-danger"></span>
+                        <img src="@FileLocation.RetriveFileFromFolder@Model.ExistingImage" class="img-thumbnail" height="200px" width="200px" asp-append-version="true"   />                      
+                     
+                    </div>
+                        <span asp-validation-for="BookName" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BookPicture" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="BookPicture" class="custom-file-input"  />
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Author" class="control-label"></label>
+                        <input asp-for="Author" class="form-control" />
+                        <span asp-validation-for="Author" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Genre" class="control-label"></label>
+                        <input asp-for="Genre" class="form-control" />
+                        <span asp-validation-for="Genre" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SupId" class="control-label"></label>
+                        <input asp-for="SupId" class="form-control" />
+                        <span asp-validation-for="SupId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Edition" class="control-label"></label>
+                        <input asp-for="Edition" class="form-control" />
+                        <span asp-validation-for="Edition" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Stock" class="control-label"></label>
+                        <input asp-for="Stock" type="number" min="0" class="form-control" />
+                        <span asp-validation-for="Stock" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i> Update</button>
+                <a asp-action="Index" class="btn btn-sm btn-primary rounded-0"><i class="fas fa-fast-backward"></i> Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+        
+        $(document).ready(function() {
+    $("button").click(function() {
+        var url = $("#container").attr("src");
+        $("#container").attr("src", url + `?v=${new Date().getTime()}`);
+    });
+});
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

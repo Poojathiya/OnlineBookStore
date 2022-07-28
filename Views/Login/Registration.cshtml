@@ -1,0 +1,63 @@
+﻿@model OnlineBookStore.Models.NewRegistration
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!-- Designined by CodingLab - Update by Fantacy Design -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | Fantacy Design </title>
+    <link rel="stylesheet" href="~/css/style1.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body><div class="container">
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="title">Registration</div>
+    <div class="content">
+      <form asp-action="Registration">
+        <div class="user-details">
+          <div class="input-box">  
+                 <span  asp-validation-for="UserName" class="details">UserName</span>
+              <lable asp-for="UserName" class="details"></lable>
+               <input asp-for="UserName" type="text" placeholder="Enter your name" required>
+            
+         </div>
+         
+
+         <div class="input-box">
+            <span asp-validation-for="MailId"class="details">Email</span>
+            <lable asp-for="Mailid" class="details"></lable>
+            <input asp-for="MailId" type="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span  asp-validation-for="Address" class="details">Address</span>
+            <input asp-for="Address" type="text" placeholder="Enter your Address" required>
+          </div>
+         
+          <div class="input-box">
+            <span  asp-validation-for="PhNumber" class="details">Phone Number</span>
+            <input asp-for="PhNumber" type="tel" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span asp-validation-for="Password" class="details">Password</span>
+            <input asp-for="Password" type="password" placeholder="Enter your password" required>
+          </div>
+      @*   <div class="input-box">
+            <span asp-validation-for="ConfirmPassword" class="details">ConfirmPassword</span>
+            <input asp-for="ConfirmPassword" type="text" placeholder="Enter your password" required>
+          </div>*@
+        </div>
+
+
+     
+        <div class="button">
+          <input  type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+ 
+</body>
+</html>
+

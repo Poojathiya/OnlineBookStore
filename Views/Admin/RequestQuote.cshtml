@@ -1,0 +1,39 @@
+﻿@model OnlineBookStore.Models.Booksupplier
+
+@{
+    ViewData["Title"] = "RequestQuote";
+}
+
+<h1>RequestQuote</h1>
+
+<h4>Booksupplier</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RequestQuote" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SupId" />
+
+            <div class="form-group">
+                <label asp-for="SupName" class="control-label"></label>
+                <input asp-for="SupName" class="form-control"  />
+                <span asp-validation-for="SupName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailId" class="control-label"></label>
+                <input asp-for="MailId" class="form-control"/>
+                <span asp-validation-for="MailId" class="text-danger"></span>
+            </div>
+           <div>
+           <label for="message" class="control-label">Message</label>
+              <textarea id="subject" name="message" placeholder="Write something.." style="height:200px; width:500px">
+          </textarea> 
+           </div>
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

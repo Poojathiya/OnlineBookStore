@@ -1,0 +1,63 @@
+﻿@model IEnumerable<OnlineBookStore.Models.Mycart>
+
+@{
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    ViewData["Title"] = "Viewcart";
+     Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<h1>My Cart</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              Book Name
+            </th>
+            <th>
+              Author Name
+            </th>
+            <th>
+              Unit Price
+            </th>
+            <th>
+             Quantity
+            </th>
+            <th>
+                Total
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bill)
+            </td>
+            <td> <a asp-action="Delete" asp-route-CartId="@item.CartId" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash"></i></a></td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>Total Quantity: @ViewBag.count</p>
+<h5>Total Bill: Rs.@ViewData["total"]</h5>
+
+      <a asp-action="BuyDetails"  class="btn btn-sm btn-info rounded-0" >Proceed to Buy</a>
+           
+
+               
+              
+                
